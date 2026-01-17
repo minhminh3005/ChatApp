@@ -1,4 +1,4 @@
-hatApp
+ChatApp
 
 A real-time chat application built with React, TypeScript, and Node.js. This project features instant messaging and is designed for future AI integration.
 
