@@ -44,6 +44,11 @@ export interface ConversationResponse {
     conversations: Conversation[];
 }
 
+export interface FetchMessagesResponse {
+    messages: Message[];
+    nextCursor: string | null;
+}
+
 export interface Message {
     _id: string;
     conversationId: string;

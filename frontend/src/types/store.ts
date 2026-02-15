@@ -1,5 +1,5 @@
-import type {IUser} from "@/types/user.ts";
-import type {Conversation, Message} from "@/types/chat.ts";
+import type { IUser } from "@/types/user.ts";
+import type { Conversation, Message } from "@/types/chat.ts";
 
 export interface AuthState {
     accessToken: string | null;
@@ -28,8 +28,10 @@ export interface ChatState {
         nextCursor: string | null;
     }>;
     activeConversationId: string | null;
-    loading: boolean;
+    messageLoading: boolean;
+    convoLoading: boolean;
     reset: () => void;
     setActiveConversation: (conversationId: string | null) => void;
     fetchConversations: () => void;
+    fetchMessages: (conversationId: string) => Promise<void>;
 }

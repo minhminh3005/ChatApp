@@ -12,19 +12,21 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar.tsx"
-import {Moon, Sun} from "lucide-react";
-import {Switch} from "@/components/ui/switch.tsx";
+import { Moon, Sun } from "lucide-react";
+import { Switch } from "@/components/ui/switch.tsx";
 import CreateNewChat from "@/components/chat/CreateNewChat.tsx";
 import GroupChatModal from "@/components/chat/GroupChatModal.tsx";
 import GroupChatList from "@/components/chat/GroupChatList.tsx";
 import AddFriendModal from "@/components/chat/AddFriendModal.tsx";
 import DirectMessageList from "@/components/chat/DirectMessageList.tsx";
-import {useThemeStore} from "@/stores/useThemeStore.ts";
+import { useThemeStore } from "@/stores/useThemeStore.ts";
+import { useAuthStore } from "@/stores/useAuthStore";
+import { NavUser } from "./nav-user";
 
 
-export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
-    const {isDark, toggleTheme} = useThemeStore();
-
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+    const { isDark, toggleTheme } = useThemeStore();
+    const { user } = useAuthStore();
     return (<>
         <Sidebar variant="inset" {...props}>
             {/* Header */}
@@ -38,13 +40,13 @@ export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
                                         Chat App
                                     </h1>
                                     <div className="flex items-center gap-2">
-                                        <Sun className={"size-4 text-white/80"}/>
+                                        <Sun className={"size-4 text-white/80"} />
                                         <Switch
                                             checked={isDark}
                                             onCheckedChange={toggleTheme}
                                             className={"data-[state=checked]:bg-background/80"}
                                         />
-                                        <Moon className={"size-4 text-white/80"}/>
+                                        <Moon className={"size-4 text-white/80"} />
                                     </div>
                                 </div>
                             </a>
@@ -58,7 +60,7 @@ export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
                 {/* New Chat*/}
                 <SidebarGroup>
                     <SidebarGroupContent>
-                        <CreateNewChat/>
+                        <CreateNewChat />
                     </SidebarGroupContent>
                 </SidebarGroup>
 
@@ -92,7 +94,7 @@ export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
             {/* Footer */}
 
             <SidebarFooter>
-                {/*<NavUser user={data.user} />*/}
+                {user && <NavUser user={user} />}
             </SidebarFooter>
         </Sidebar>
     </>)
