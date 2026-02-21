@@ -3,6 +3,8 @@
 import type { Config } from "tailwindcss";
 // @ts-ignore
 import tailwindcssAnimate from "tailwindcss-animate";
+// @ts-ignore
+import tailwindScrollbar from "tailwind-scrollbar";
 
 export default {
     content: [
@@ -118,5 +120,5 @@ export default {
             },
         },
     },
-    plugins: [tailwindcssAnimate],
+    plugins: [tailwindcssAnimate, tailwindScrollbar],
 } satisfies Config;

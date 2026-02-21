@@ -11,7 +11,7 @@ import {useNavigate} from "react-router";
 
 const signInFormSchema = z.object({
     username: z.string().min(3, "Username must be at least 3 characters"),
-    password: z.string().min(6, "Password must be at least 6 characters"),
+    password: z.string().min(3, "Password must be at least 3 characters"),
 });
 
 type SignInFormValues = z.infer<typeof signInFormSchema>;

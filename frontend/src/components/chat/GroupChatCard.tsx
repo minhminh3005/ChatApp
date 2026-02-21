@@ -17,7 +17,7 @@ function GroupChatCard({ convo }: { convo: Conversation }) {
     const handleSelectConversation = async (id: string) => {
         setActiveConversation(id);
         if (!messages[id]) {
-            await fetchMessages(id);
+            await fetchMessages();
         }
     }
 
@@ -27,7 +27,7 @@ function GroupChatCard({ convo }: { convo: Conversation }) {
             onSelect={handleSelectConversation}
             leftSection={<>
                 {unreadCount > 0 && <UnreadCountBadge unreadCount={unreadCount} />}
-                <GroupChatAvatar participants={convo.participants} type={"chat"} />
+                <GroupChatAvatar participants={convo.participants} type="chat" />
             </>}
             subtitle={
                 <p className={"text-sm truncate text-muted-foreground"}>

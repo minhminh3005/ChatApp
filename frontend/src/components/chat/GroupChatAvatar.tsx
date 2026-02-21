@@ -8,6 +8,7 @@ interface  GroupChatAvatarProps {
 }
 
 function GroupChatAvatar({participants, type}: GroupChatAvatarProps) {
+  console.log(type)
     const avatars = [] ;
     const limit = Math.min(participants.length, 4);
     for (let i = 0; i < participants.length; i++) {
